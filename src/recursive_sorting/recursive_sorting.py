@@ -4,9 +4,11 @@ def merge( arrA, arrB ):
     merged_arr = [0] * elements
     arrAIndex = 0
     arrBIndex = 0
-    for i in range(elements):
+    for i in range(len(merged_arr)):
         # If a has no more indexs, add b
-        if arrAIndex >= len(arrA):
+        if arrAIndex >= len(arrA) and arrBIndex >= len(arrB):
+            return merged_arr
+        elif arrAIndex >= len(arrA):
             merged_arr[i] = arrB[arrBIndex]
             arrBIndex += 1  
         elif arrBIndex >= len(arrB):
@@ -25,6 +27,7 @@ def merge( arrA, arrB ):
 # TO-DO: implement the Merge Sort function below USING RECURSION
 
 def merge_sort( arr ):
+    copyArr = list(arr)
     # TO-DO
     if len(arr) > 1:
         split = (len(arr)//2)
@@ -33,10 +36,10 @@ def merge_sort( arr ):
         leftSorted = merge_sort(leftSplit)
         rightSorted = merge_sort(rightSplit)
         # Set arr as merge()
-        arr = merge(leftSorted, rightSorted)
-    return arr
+        copyArr = merge(leftSorted, rightSorted)
+    return copyArr
 
-merge_sort([2, 5, 3, 8, 9, 7, 1])
+print("merge sort: ",merge_sort([2, 5, 3, 8, 9, 7, 1]))
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
     # TO-DO
