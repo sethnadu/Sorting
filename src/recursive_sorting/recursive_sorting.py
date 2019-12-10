@@ -14,9 +14,10 @@ def merge( arrA, arrB ):
         elif arrBIndex >= len(arrB):
             merged_arr[i] = arrA[arrAIndex]
             arrAIndex += 1
-        elif arrA[arrAIndex] < arrB[arrBIndex]:
+        elif arrA[arrAIndex] <= arrB[arrBIndex]:
             merged_arr[i] = arrA[arrAIndex]
             arrAIndex += 1
+        # arrA[arrAIndex] >= arrB[arrBIndex]
         else:
             merged_arr[i] = arrB[arrBIndex]
             arrBIndex += 1
@@ -39,7 +40,7 @@ def merge_sort( arr ):
         copyArr = merge(leftSorted, rightSorted)
     return copyArr
 
-print("merge sort: ",merge_sort([2, 5, 3, 8, 9, 7, 1]))
+print("merge sort: ",merge_sort([2, 5, 3, 8, 9, 7, 1, 1, 9]))
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
     # TO-DO
